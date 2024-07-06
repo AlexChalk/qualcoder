@@ -1,0 +1,79 @@
+[tool.poetry]
+name = "qualcoder_env"
+version = "0.1.0"
+description = ""
+authors = ["Alex Chalk <contact@alexchalk.net>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+chardet = "^5.2.0"
+ebooklib = "^0.18"
+ply = "^3.11"
+openpyxl = "^3.1.5"
+pandas = "^2.2.2"
+pyqt6 = "^6.7.0"
+pillow = "^10.4.0"
+pdfminer-six = "^20240706"
+plotly = "^5.22.0"
+pydub = "^0.25.1"
+python-vlc = "^3.0.20123"
+rispy = "^0.9.0"
+six = "^1.16.0"
+speechrecognition = "^3.10.4"
+wordcloud = "^1.9.3"
+xmlschema = "^3.3.1"
+qualcoder = {path = "./QualCoder-3.4"}
+pyqt6-qt6 = "6.7.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+exclude = [
+  ".bzr",
+  ".direnv",
+  ".eggs",
+  ".git",
+  ".git-rewrite",
+  ".hg",
+  ".ipynb_checkpoints",
+  ".mypy_cache",
+  ".nox",
+  ".pants.d",
+  ".pyenv",
+  ".pytest_cache",
+  ".pytype",
+  ".ruff_cache",
+  ".svn",
+  ".tox",
+  ".venv",
+  ".vscode",
+  "__pypackages__",
+  "_build",
+  "buck-out",
+  "build",
+  "dist",
+  "node_modules",
+  "site-packages",
+  "venv",
+]
+
+line-length = 88
+indent-width = 4
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+ignore = []
+
+fixable = ["ALL"]
+unfixable = []
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
