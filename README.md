@@ -1,7 +1,6 @@
 ## To run:
 ```bash
-nix build
-nix run .#qualcoder
+nix run
 ```
 
 
