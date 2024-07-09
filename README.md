@@ -1,6 +1,5 @@
 ## To run:
 ```bash
-./download-qualcoder-lib.sh
 nix build
 nix run .#qualcoder
 ```

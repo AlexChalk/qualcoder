@@ -15,7 +15,22 @@
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        qualcoder_module = pkgs.stdenv.mkDerivation {
+          pname = "QualCoder";
+          version = "3.4";
+
+          src = pkgs.fetchzip {
+            url = "https://github.com/ccbogel/QualCoder/archive/refs/tags/3.4.zip";
+            sha256 = "sha256-xvwQMaTF829oWLBRvgRChiJ0DMuROKetoiv8A7ykCnk=";
+          };
+
+          installPhase = ''
+            mkdir -p $out
+            cp -r . $out
+          '';
+        };
         inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryEnv overrides;
+
         python = mkPoetryEnv {
           projectDir = self;
           preferWheels = true;
@@ -32,6 +47,7 @@
               ];
             });
             qualcoder = prev.qualcoder.overridePythonAttrs (old: {
+              src = qualcoder_module;
               nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
                 prev.setuptools
               ];
