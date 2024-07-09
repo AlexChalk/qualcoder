@@ -54,16 +54,19 @@
             });
           });
         };
-        qualcoder = {
+        qualcoder = pkgs.writeShellScriptBin "qualcoder" ''
+          ${python}/bin/qualcoder
+        '';
+        qualcoder_app = {
           type = "app";
-          program = "${python}/bin/qualcoder";
+          program = "${qualcoder}/bin/qualcoder";
         };
       in
       {
-        packages = { inherit python; };
-        packages.default = python;
-        apps = { inherit qualcoder; };
-        apps.default = qualcoder;
+        packages = { inherit qualcoder; };
+        packages.default = qualcoder;
+        apps = { inherit qualcoder_app; };
+        apps.default = qualcoder_app;
       }
     );
 }
